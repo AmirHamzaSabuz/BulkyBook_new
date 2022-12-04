@@ -1,7 +1,13 @@
-﻿
+﻿@model List<Category>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
 
+@foreach (var category in Model)
+{
+    @category.Name 
+    <br/>
+    @category.CreatedDateTime
+}
