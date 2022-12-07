@@ -4,8 +4,9 @@ using BulkyBook_DataAccess.Repository.IRepository;
 using BulkyBook_Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyBook_Web.Controllers
+namespace BulkyBook_Web.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -85,7 +86,7 @@ namespace BulkyBook_Web.Controllers
             }
             return View(obj);
         }
-        
+
         //GET
         [HttpGet]
         public IActionResult Delete(int? id)
