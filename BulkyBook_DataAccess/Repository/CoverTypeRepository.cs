@@ -9,21 +9,19 @@ using System.Threading.Tasks;
 
 namespace BulkyBook_DataAccess.Repository
 {
-    public class UnitOfWork : IUnitOfWork
+    public class CoverTypeRepository : Repository<CoverType>, ICoverTypeRepository
     {
         private ApplicationDbContext _db;
 
-        public UnitOfWork(ApplicationDbContext db)
+        public CoverTypeRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
-            Category = new CategoryRepository(_db);
-            CoverType = new CoverTypeRepository(_db);
         }
-        public ICategoryRepository Category { get; private set; }
-        public ICoverTypeRepository CoverType { get; private set; }
-        public void Save()
+
+
+        public void Update(CoverType obj)
         {
-            _db.SaveChanges();
+            _db.CoverTypes.Update(obj);
         }
     }
 }
